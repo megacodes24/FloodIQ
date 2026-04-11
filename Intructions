@@ -1,0 +1,50 @@
+Links
+
+SSH: ssh acergn100_36@100.86.225.122
+
+Setup on server
+
+cd ~/my_nemotron
+unzip floodiq-code.zip -d .
+mkdir -p floodiq/data/raw
+unzip floodiq-data.zip -d floodiq/data/raw
+cd floodiq
+source ~/nemotron/venv/bin/activate
+python -m pip install -r requirements.txt
+Verify required raw files
+
+ls -lah data/raw
+Must include:
+
+be_NYC_004.tif, be_NYC_005.tif, be_NYC_008.tif, be_NYC_009.tif
+building_footprints.json
+311_flooding_bronx.json, 311_ida_bronx.json
+ms4_outfalls.zip (shapefile zip preferred)
+landcover_2021.tif
+fvi_scores.json (placeholder or real)
+Preprocess (strict Open Data mode)
+
+python data/data_loader.py --preprocess --strict-open-data
+Run backend
+
+python scripts/precompute_scenarios.py
+uvicorn api.main:app --host 0.0.0.0 --port 8001
+Run frontend (new terminal)
+
+cd ~/my_nemotron/floodiq/frontend
+npm install
+npm run dev -- --host 0.0.0.0 --port 5173
+Open in browser
+
+API docs: http://100.86.225.122:8001/docs
+Frontend: http://100.86.225.122:5173 (or 5174 if 5173 busy)
+Important notes
+
+If strict preprocess fails at infiltration, landcover_2021.tif is missing/wrong format.
+If strict preprocess fails at drains, ms4_outfalls.zip is likely GDB format; use shapefile zip or convert first.
+For demos, keep both uvicorn and frontend dev server running.
+If anyone gets stuck, send:
+
+command run
+full terminal error output
+ls -lah data/raw output
