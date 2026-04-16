@@ -1,0 +1,502 @@
+:root {
+  --bg: #0b1720;
+  --panel: rgba(12, 34, 45, 0.88);
+  --panel-border: rgba(149, 208, 232, 0.18);
+  --text: #e7f7ff;
+  --muted: #8db8c9;
+  --accent: #6fd3ff;
+  --accent-strong: #1c92c9;
+  --warn: #ffd166;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(38, 117, 150, 0.38), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(12, 72, 99, 0.46), transparent 30%),
+    linear-gradient(180deg, #071019 0%, #0a1e28 100%);
+}
+
+.shell {
+  width: min(1240px, calc(100vw - 32px));
+  margin: 0 auto;
+  padding: 32px 0 40px;
+}
+
+.hero,
+.layout {
+  display: grid;
+  gap: 20px;
+}
+
+.forecastBoardCard {
+  margin-bottom: 20px;
+}
+
+.hero {
+  grid-template-columns: 1.5fr 1fr;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-size: 0.8rem;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 0.95;
+  max-width: 9ch;
+}
+
+.lede {
+  color: var(--muted);
+  max-width: 60ch;
+  margin-top: 16px;
+  font-size: 1.05rem;
+}
+
+.heroPoints {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+  max-width: 58ch;
+}
+
+.heroPoint {
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  width: fit-content;
+  border: 1px solid rgba(149, 208, 232, 0.14);
+}
+
+.layout {
+  grid-template-columns: 1.7fr 1fr;
+  align-items: start;
+}
+
+.mapColumn {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.side {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(14px);
+}
+
+.forecastBoard {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.areaCard {
+  width: 100%;
+  text-align: left;
+  border-radius: 18px;
+  border: 1px solid rgba(149, 208, 232, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  padding: 16px;
+  box-shadow: none;
+}
+
+.areaCard strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.areaCard p {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.areaCardEyebrow {
+  display: block;
+  color: var(--accent);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.areaCardActive {
+  border-color: rgba(255, 209, 102, 0.65);
+  background: linear-gradient(180deg, rgba(255, 209, 102, 0.14), rgba(111, 211, 255, 0.08));
+}
+
+.controls {
+  display: grid;
+  gap: 14px;
+}
+
+.demoLock {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(149, 208, 232, 0.14);
+}
+
+.demoLock span {
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demoLock strong {
+  font-size: 1.08rem;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(149, 208, 232, 0.18);
+  padding: 12px 14px;
+  font: inherit;
+}
+
+input,
+select {
+  color: var(--text);
+  background: rgba(2, 11, 17, 0.72);
+}
+
+button {
+  cursor: pointer;
+  color: #041017;
+  background: linear-gradient(135deg, var(--warn), var(--accent));
+  font-weight: 700;
+}
+
+.controlHint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.manualDivider {
+  color: var(--accent);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-top: 6px;
+  border-top: 1px solid rgba(149, 208, 232, 0.12);
+}
+
+.sectionTitle {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.sectionTitle p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  max-width: 32ch;
+}
+
+.mapCard {
+  padding-bottom: 16px;
+}
+
+.mapHeader {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.gn100Strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.stripItem,
+.overlayChip {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(149, 208, 232, 0.12);
+}
+
+.stripItem span,
+.overlayChip span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.stripItem strong,
+.overlayChip strong {
+  font-size: 1rem;
+}
+
+.mapPanel {
+  height: 540px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(149, 208, 232, 0.12);
+}
+
+.mapOverlayRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.mapActionBar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.actionBarItem {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(149, 208, 232, 0.1);
+}
+
+.actionBarItem span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.actionBarItem strong {
+  font-size: 1rem;
+}
+
+.mapInsights {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+}
+
+.mapInsights .metrics {
+  grid-column: 1 / -1;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.metric {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+}
+
+.metric strong {
+  font-size: 1.3rem;
+}
+
+.alerts {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.alert {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(26, 76, 95, 0.6);
+  color: var(--text);
+  border: 1px solid rgba(149, 208, 232, 0.12);
+}
+
+.briefingLead {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.briefingBody {
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+.briefingMeta {
+  margin-top: 14px;
+  color: var(--accent);
+  font-size: 0.88rem;
+}
+
+.miniMetrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.miniMetric {
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(149, 208, 232, 0.1);
+}
+
+.miniMetric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.miniMetric strong {
+  font-size: 1.1rem;
+}
+
+.actionItem + .actionItem {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(149, 208, 232, 0.1);
+}
+
+.actionItem strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.actionItem p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.actionMeta {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.driverList {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.driverItem {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(149, 208, 232, 0.1);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.leaflet-overlay-pane .hotSegment {
+  filter: drop-shadow(0 0 8px rgba(244, 96, 54, 0.45));
+}
+
+.leaflet-overlay-pane .hotSegmentStrong {
+  filter: drop-shadow(0 0 12px rgba(215, 38, 61, 0.65));
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(149, 208, 232, 0.1);
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 980px) {
+  .hero,
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .mapInsights,
+  .forecastBoard,
+  .gn100Strip,
+  .mapOverlayRow,
+  .mapActionBar {
+    grid-template-columns: 1fr;
+  }
+
+  .shell {
+    width: min(100vw - 20px, 1240px);
+    padding-top: 20px;
+  }
+
+  .mapPanel {
+    height: 420px;
+  }
+}

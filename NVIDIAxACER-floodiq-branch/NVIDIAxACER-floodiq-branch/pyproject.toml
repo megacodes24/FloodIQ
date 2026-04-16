@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "floodiq"
+version = "0.1.0"
+description = "FloodIQ hackathon MVP for block-level flood scenario simulation"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=2.0",
+  "pandas>=2.0",
+  "requests>=2.31",
+]
+
+[tool.setuptools.packages.find]
+include = ["floodiq*"]
